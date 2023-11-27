@@ -1,0 +1,11 @@
+{
+  "plugins": ["prettier-plugin-astro", "eslint-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
+}

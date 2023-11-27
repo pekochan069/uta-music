@@ -1,0 +1,141 @@
+---
+import { Image } from "astro:assets";
+
+import Logo from "~/assets/logo.png";
+import ThemeProvider from "~/components/Navbar/ThemeProvider";
+---
+
+<!-- <header>
+  <nav
+    class="container mx-auto 1080p:max-w-screen-2xl 1440p:max-w-screen-1080p flex items-center py-2 px-2"
+  >
+    <div class="flex items-center justify-between w-full">
+      <div>
+        <a
+          href="/"
+          class="flex p-1.5 gap-2 select-none md:py-2 md:px-3 rounded-xl hover:bg-slate-200 transition-colors duration-75 focus:ring-2 ring-offset-2 ring-slate-400 ease-in-out outline-none active:bg-slate-100"
+          ><Image src={Logo} alt="Logo Image" class="w-10 h-10" /><div
+            class="flex flex-col text-xl leading-5 justify-center items-start font-bold tracking-wide"
+          >
+            <span class="text-violet-500">Uta</span><span class="text-slate-700"
+              >Music</span
+            >
+          </div>
+        </a>
+      </div>
+      <div class="flex justify-end">
+        <ThemeProvider client:load />
+      </div>
+    </div>
+  </nav>
+</header> -->
+<header
+  class="relative z-50 flex w-full flex-wrap bg-white pb-4 pt-2 text-sm dark:bg-gray-800 sm:flex-nowrap sm:justify-start sm:pb-2"
+>
+  <nav
+    aria-label="Global"
+    class="container mx-auto w-full px-4 sm:flex sm:items-center sm:justify-between 1080p:max-w-screen-2xl 1440p:max-w-screen-1080p"
+  >
+    <div class="flex items-center justify-between">
+      <a
+        class="flex w-max select-none gap-2 rounded-xl p-1.5 outline-none ring-slate-400 ring-offset-2 transition-colors duration-75 ease-in-out hover:bg-slate-200 focus:ring-2 active:bg-slate-100 dark:ring-slate-400 dark:ring-offset-2 dark:hover:bg-slate-700 dark:focus:ring-2 dark:active:bg-slate-600 sm:px-3 sm:py-2"
+        href="/"
+        ><Image alt="Logo Image" class="h-10 w-10" src={Logo} /><div
+          class="grid w-max items-start justify-center text-xl font-bold leading-5 tracking-wide"
+        >
+          <span class="text-violet-500">Uta</span><span
+            class="text-slate-700 dark:text-slate-300">Music</span
+          >
+        </div>
+      </a>
+      <div class="sm:hidden">
+        <button
+          aria-controls="navbar-with-mega-menu"
+          aria-label="Toggle navigation"
+          class="hs-collapse-toggle inline-flex items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white p-2 text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-700 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          data-hs-collapse="#navbar-with-mega-menu"
+          type="button"
+        >
+          <svg
+            class="h-4 w-4 shrink-0 hs-collapse-open:hidden"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><line x1="3" x2="21" y1="6" y2="6"></line><line
+              x1="3"
+              x2="21"
+              y1="12"
+              y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg
+          >
+          <svg
+            class="hidden h-4 w-4 shrink-0 hs-collapse-open:block"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+          >
+        </button>
+      </div>
+    </div>
+    <div
+      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 sm:block"
+      id="navbar-with-mega-menu"
+    >
+      <div
+        class="mt-5 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:justify-end sm:ps-5"
+      >
+        <a
+          aria-current="page"
+          class="font-medium text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          href="#">Landing</a
+        >
+        <div
+          class="hs-dropdown [--adaptive:none] [--auto-close:inside] [--strategy:static] sm:[--placement:bottom-right] sm:[--strategy:fixed]"
+        >
+          <button
+            class="flex w-full items-center font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500"
+            id="hs-mega-menu-basic-dr"
+            type="button"
+          >
+            Settings
+            <svg
+              class="ms-1 h-4 w-4 shrink-0"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path d="m6 9 6 6 6-6"></path></svg
+            >
+          </button>
+
+          <div
+            class="hs-dropdown-menu top-full z-10 hidden rounded-lg bg-white p-2 opacity-0 transition-[opacity,margin] duration-[0.1ms] before:absolute before:-top-5 before:start-0 before:h-5 before:w-full hs-dropdown-open:opacity-100 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800 sm:w-48 sm:border sm:shadow-md sm:duration-[150ms] sm:dark:border"
+            style=""
+          >
+            <ThemeProvider
+              class="flex w-full items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+              client:load
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
