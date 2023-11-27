@@ -2,8 +2,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:import/recommended",
-        "plugin:import/typescript",
+        // "plugin:import/recommended",
+        // "plugin:import/typescript",
         // "plugin:deprecation/recommended",
         "plugin:promise/recommended",
         "plugin:tailwindcss/recommended",
