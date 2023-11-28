@@ -4,9 +4,9 @@
 
 ### Requirements
 
-Requires [node.js](httls://nodejs.org) version `>=20.6.0`
+Requires [node.js](https://nodejs.org) version `>=20.6.0`
 
-Download node.js from your preferred package manager or use nvm to install correct version of node.js
+Install `node.js` from your preferred package manager or use `nvm` to install correct version of node.js
 
 ```sh
 nvm use
@@ -14,7 +14,7 @@ nvm use
 
 ### Get project
 
-Install [git](https://git-scm.com/)
+Install [git](https://git-scm.com/) from your preferred package manager
 
 ```sh
 git clone https://github.com/pekochan069/uta-music.git
@@ -33,7 +33,7 @@ cd ./uta-music
 This project uses `pnpm` to manage its dependencies
 
 ```sh
-corepack prepare pnpm@8.11.0 --activate
+corepack prepare pnpm@latest --activate
 pnpm i
 ```
 
@@ -81,4 +81,4 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 | `pnpm format` | Format source files with `prettier`                     |
 | `pnpm lint` | Lint source files with `eslint`                     |
-| `pnpm postinstall` | Command which should be run after clone this repo                     |
+| `pnpm postinstall` | Command which should be run after `git clone`                     |
