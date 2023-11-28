@@ -1,7 +1,13 @@
-# Astro Starter Kit: Minimal
+# Uta Music
+
+## Project setup
+
+### Requirements
+
+Requires [node.js](httls://nodejs.org) version `>=20.6.0`
 
 ```sh
-npm create astro@latest -- --template minimal
+pnpm create astro@latest -- --template minimal
 ```
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
