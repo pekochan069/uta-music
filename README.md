@@ -43,7 +43,7 @@ pnpm i
 pnpm postinstall
 ```
 
-### Buiid and run Uta Music
+### Build and run Uta Music
 
 ```sh
 pnpm build
