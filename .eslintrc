@@ -11,6 +11,7 @@
     "plugin:perfectionist/recommended-natural",
     "plugin:solid/typescript",
     "plugin:astro/recommended",
+    "plugin:drizzle/recommended",
     "prettier"
   ],
   "plugins": [
@@ -19,6 +20,7 @@
     "write-good-comments",
     "jsdoc",
     "perfectionist",
+    "drizzle",
     "solid"
   ],
   "parser": "@typescript-eslint/parser",
@@ -34,7 +36,7 @@
     }
   },
   "rules": {
-    // "codegen/codegen": "error",
+    "codegen/codegen": "error",
     "write-good-comments/write-good-comments": "warn",
     "tailwindcss/no-custom-classname": "off",
     "perfectionist/sort-objects": "off"

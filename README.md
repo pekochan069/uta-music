@@ -43,6 +43,13 @@ pnpm i
 pnpm postinstall
 ```
 
+### Environment variables
+
+```text
+XATA_BRANCH=
+XATA_API_KEY=
+```
+
 ### Build and run Uta Music
 
 ```sh
@@ -82,3 +89,5 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm format` | Format source files with `prettier`                     |
 | `pnpm lint` | Lint source files with `eslint`                     |
 | `pnpm postinstall` | Command which should be run after `git clone`                     |
+| `pnpm xata` | Run [xata](https://xata.io/) CLI Tool |
+| `pnpm vercel` | Run [vercel](https://vercel.com/dashboard) CLI Tool |

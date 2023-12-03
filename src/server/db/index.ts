@@ -1,6 +1,8 @@
-import { sql } from "@vercel/postgres";
 import { drizzle } from "drizzle-orm/vercel-postgres";
 
-const db = drizzle(sql);
+import { getXataClient } from "./xata";
+
+const xata = getXataClient();
+const db = drizzle(xata);
 
 export default db;
