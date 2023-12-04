@@ -1,5 +1,5 @@
 {
-  "plugins": ["prettier-plugin-astro", "eslint-plugin-tailwindcss"],
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   "overrides": [
     {
       "files": "*.astro",
