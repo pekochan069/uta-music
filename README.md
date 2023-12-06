@@ -46,8 +46,9 @@ pnpm postinstall
 ### Environment variables
 
 ```text
-XATA_BRANCH=
-XATA_API_KEY=
+DATABASE_HOST=
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
 ```
 
 ### Build and run Uta Music
@@ -55,23 +56,6 @@ XATA_API_KEY=
 ```sh
 pnpm build
 pnpm start
-```
-
-## 🚀 Project Structure
-
-```text
-/
-├── public/
-├── src/
-│   ├── pages/
-│   │   └── index.astro
-│   ├── server/
-│   │   ├── trpc/
-│   │   ├── db/
-│   │   ├── ...
-│   └── utils/
-│       └── nanoid.ts
-└── package.json
 ```
 
 ## 🧞 Commands
@@ -89,5 +73,8 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm format` | Format source files with `prettier`                     |
 | `pnpm lint` | Lint source files with `eslint`                     |
 | `pnpm postinstall` | Command which should be run after `git clone`                     |
-| `pnpm xata` | Run [xata](https://xata.io/) CLI Tool |
 | `pnpm vercel` | Run [vercel](https://vercel.com/dashboard) CLI Tool |
+| `pnpm db:generate` | Generate [Drizzle ORM] migration files |
+| `pnpm db:pull` | Pull data from database |
+| `pnpm db:push` | Push data to database |
+| `pnpm db:studio` | Launch database studio for data managing |

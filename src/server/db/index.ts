@@ -1,8 +1,10 @@
+import { connect } from "@planetscale/database";
 import { drizzle } from "drizzle-orm/vercel-postgres";
 
-import { getXataClient } from "./xata";
+const connection = connect({
+  host: process.env["DATABASE_HOST"],
+  username: process.env["DATABASE_USERNAME"],
+  password: process.env["DATABASE_PASSWORD"],
+});
 
-const xata = getXataClient();
-const db = drizzle(xata);
-
-export default db;
+export const db = drizzle(connection);

@@ -1,6 +1,0 @@
-{
-  "databaseURL": "https://pekochan069-s-workspace-mrlc5p.ap-southeast-2.xata.sh/db/uta-music",
-  "codegen": {
-    "output": "src/server/db/xata.ts"
-  }
-}
