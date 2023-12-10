@@ -1,5 +1,20 @@
 ---
+import { grid } from "styled-system/patterns";
+import VideoItem from "~/components/VideoItem";
 import WithNavbar from "~/layouts/WithNavbar.astro";
+
+const videoUrl = "https://youtu.be/mhbjiJwv0Kw";
+const thumbnailUrl = "https://i.ytimg.com/vi/mhbjiJwv0Kw/maxresdefault.jpg";
 ---
 
-<WithNavbar>hello</WithNavbar>
+<WithNavbar>
+  <div class={grid({ })}>
+
+    <VideoItem
+    channel="白玖ウタノ"
+    thumbnailUrl={thumbnailUrl}
+    title="綺羅キラー"
+    videoUrl={videoUrl}
+    />
+  </div>
+</WithNavbar>

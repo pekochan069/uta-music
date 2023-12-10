@@ -1,13 +1,14 @@
-import { bigint, mysqlTable, text, varchar } from "drizzle-orm/mysql-core";
+import { bigint, mysqlTable, varchar } from "drizzle-orm/mysql-core";
 
-import { artist } from ".";
+import { artist, channel } from ".";
 
 export const singer = mysqlTable("singer", {
   id: bigint("id", { mode: "bigint" }).autoincrement().primaryKey(),
-  x_handle: varchar("x_id", { length: 64 }),
-  youtube_id: varchar("youtube_id", { length: 32 }),
-  youtube_handle: text("youtube_handle"),
-  artist_id: bigint("artist_id", { mode: "bigint" }).references(
-    () => artist.id,
-  ).notNull(),
+  x_handle: varchar("x_handle", { length: 64 }),
+  artist_id: bigint("artist_id", { mode: "bigint" })
+    .notNull()
+    .references(() => artist.id),
+  channel_id: bigint("channel_id", { mode: "bigint" })
+    .notNull()
+    .references(() => channel.id),
 });

@@ -6,10 +6,15 @@ import {
   time,
 } from "drizzle-orm/mysql-core";
 
+import { channel } from "./channel";
+
 export const video = mysqlTable("video", {
   id: bigint("id", { mode: "bigint" }).autoincrement().primaryKey(),
-  video_id: text("video_id"),
-  platform: text("platform"),
+  video_id: varchar("video_id", { length: 20 }).notNull(),
   length: time("length"),
-  release_time: datetime("release_time"),
+  release_date: datetime("release_date"),
+  title: text("title").notNull(),
+  channel_id: bigint("channel_id", { mode: "bigint" })
+    .notNull()
+    .references(() => channel.id),
 });

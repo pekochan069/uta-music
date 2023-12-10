@@ -1,18 +1,16 @@
 ---
-import Navbar from "~/components/Navbar/Navbar.astro";
+import Navbar from "~/components/navbar/Navbar.astro";
 
 import BaseLayout from "./BaseLayout.astro";
 
-type props = {
+type Props = {
   title?: string;
 };
 
-const { title = "Uta Music" }: props = Astro.props;
+const { title = "Uta Music" } = Astro.props;
 ---
 
 <BaseLayout title={title}>
   <Navbar />
-  <main class="w-full">
-    <slot name="main" />
-  </main>
+  <slot />
 </BaseLayout>

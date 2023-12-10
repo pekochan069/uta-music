@@ -1,27 +1,23 @@
 ---
-import "overlayscrollbars/overlayscrollbars.css";
-
-import "~/styles/swap.css";
+import { css } from "styled-system/css";
 
 type Props = {
   title?: string;
 };
 
-const { title = "Uta Music" }: Props = Astro.props;
+const { title = "Uta Music" } = Astro.props;
 ---
 
-<html data-overlayscrollbars-initialize lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link href="/favicon.png" rel="icon" type="image" />
+    <link href="/favicon.png" rel="icon" />
     <meta content="width=device-width" name="viewport" />
     <meta content={Astro.generator} name="generator" />
     <title>{title}</title>
   </head>
-  <body class="text-slate-500 dark:bg-slate-900 dark:text-slate-400">
-    <div class="min-h-screen w-full bg-inherit" id="app">
-      <slot />
-    </div>
+  <body class={css({ color: "text", backgroundColor: "background" })}>
+    <slot />
   </body>
   <script>
     import { OverlayScrollbars } from "overlayscrollbars";
@@ -32,5 +28,4 @@ const { title = "Uta Music" }: Props = Astro.props;
       },
     });
   </script>
-  <script is:inline src="./node_modules/preline/dist/preline.js"></script>
 </html>

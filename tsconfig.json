@@ -3,9 +3,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
-  }
+  },
+  "include": [
+    "src",
+    "styled-system"
+  ]
 }
