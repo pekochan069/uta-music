@@ -14,9 +14,9 @@
     "lint:check": "eslint .",
     "format": "prettier --write --cache .",
     "format:check": "prettier --check .",
-    "db:generate": "drizzle-kit generate:mysql",
-    "db:pull": "drizzle-kit pull:mysql",
-    "db:push": "drizzle-kit push:mysql",
+    "db:generate": "drizzle-kit generate:mysql --config=drizzle.config.ts",
+    "db:pull": "drizzle-kit introspect:mysql --config=drizzle.config.ts",
+    "db:push": "drizzle-kit push:mysql --config=drizzle.config.ts",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
@@ -49,6 +49,7 @@
     "eslint-plugin-jsdoc": "^46.9.0",
     "eslint-plugin-perfectionist": "^2.5.0",
     "eslint-plugin-solid": "^0.13.0",
+    "mysql2": "^3.6.5",
     "prettier": "^3.1.0",
     "prettier-plugin-astro": "^0.12.2",
     "vercel": "^32.6.1"
