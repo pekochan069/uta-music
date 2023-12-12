@@ -1,5 +1,10 @@
-import type { Config } from "drizzle-kit";
+import { defineConfig } from "drizzle-kit";
 
-export default {
+export default defineConfig({
   schema: "./src/server/db/schema/index.ts",
-} satisfies Config;
+  out: "./drizzle",
+  driver: "mysql2",
+  dbCredentials: {
+    uri: process.env.DATABASE_URL,
+  },
+});
