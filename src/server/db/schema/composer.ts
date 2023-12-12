@@ -4,7 +4,7 @@ import { bigint, index, mysqlTable, varchar } from "drizzle-orm/mysql-core";
 import { artist, channel } from ".";
 
 export const composer = mysqlTable(
-  "channel",
+  "composer",
   {
     id: bigint("id", { mode: "bigint" }).autoincrement().primaryKey(),
     xHandle: varchar("x_handle", { length: 64 }),
