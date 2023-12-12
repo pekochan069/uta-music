@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL2")
+  relationMode = "prisma"
+}
+
+model agency {
+  id           BigInt  @id @default(autoincrement())
+  public_id    String  @unique(map: "agency_public_id_unique") @db.Char(16)
+  name_jp      String? @db.Text
+  name_en      String? @db.Text
+  name_kr      String? @db.Text
+  default_lang String  @db.Char(2)
+  x_handle     String  @db.VarChar(64)
+  website      String? @db.Text
+  channel_id   BigInt?
+
+  @@index([channel_id], map: "channel_idx")
+}
+
+model artist {
+  id           BigInt  @id @default(autoincrement())
+  public_id    String  @unique(map: "artist_public_id_unique") @db.Char(16)
+  name_jp      String? @db.Text
+  name_en      String? @db.Text
+  name_kr      String? @db.Text
+  default_lang String  @db.Char(2)
+}
+
+model channel {
+  id             BigInt @id @default(autoincrement())
+  channel_id     String @db.VarChar(64)
+  channel_name   String @db.Text
+  channel_handle String @db.Text
+}
+
+model singer {
+  id         BigInt  @id @default(autoincrement())
+  x_handle   String? @db.VarChar(64)
+  artist_id  BigInt
+  channel_id BigInt?
+
+  @@index([artist_id], map: "artist_idx")
+  @@index([channel_id], map: "channel_idx")
+}
+
+model song {
+  id           BigInt  @id @default(autoincrement())
+  public_id    String  @unique(map: "song_public_id_unique") @db.Char(16)
+  name_jp      String? @db.Text
+  name_en      String? @db.Text
+  name_kr      String? @db.Text
+  default_lang String  @db.Char(2)
+  video_id     BigInt?
+
+  @@index([video_id], map: "video_idx")
+}
+
+model song_participants {
+  song_id   BigInt
+  artist_id BigInt
+
+  @@id([song_id, artist_id])
+  @@index([artist_id], map: "artist_idx")
+  @@index([song_id], map: "song_idx")
+}
+
+model uta {
+  id              BigInt    @id @default(autoincrement())
+  public_id       String    @unique(map: "uta_public_id_unique") @db.Char(16)
+  type            String    @db.VarChar(64)
+  timestamp_start DateTime? @db.Time(0)
+  timestamp_end   DateTime? @db.Time(0)
+  title           String?   @db.Text
+  video_id        BigInt
+
+  @@index([video_id], map: "video_idx")
+}
+
+model uta_participants {
+  artist_id BigInt
+  uta_id    BigInt
+
+  @@id([artist_id, uta_id])
+  @@index([artist_id], map: "artist_idx")
+  @@index([uta_id], map: "uta_idx")
+}
+
+model uta_songs {
+  uta_id  BigInt
+  song_id BigInt
+
+  @@id([uta_id, song_id])
+  @@index([song_id], map: "song_idx")
+  @@index([uta_id], map: "uta_idx")
+}
+
+model video {
+  id           BigInt    @id @default(autoincrement())
+  video_id     String    @db.VarChar(64)
+  length       DateTime? @db.Time(0)
+  release_date DateTime? @db.DateTime(0)
+  title        String    @db.Text
+  channel_id   BigInt
+
+  @@index([channel_id], map: "channel_idx")
+}
+
+model vocaloid {
+  id        BigInt  @id @default(autoincrement())
+  artist_id BigInt?
+
+  @@index([artist_id], map: "artist_idx")
+}
+
+model vtuber {
+  id         BigInt  @id @default(autoincrement())
+  x_handle   String? @db.VarChar(64)
+  artist_id  BigInt
+  agency_id  BigInt
+  channel_id BigInt?
+
+  @@index([agency_id], map: "agency_idx")
+  @@index([artist_id], map: "artist_idx")
+  @@index([channel_id], map: "channel_idx")
+}
+
+model composer {
+  id         BigInt  @id @default(autoincrement())
+  x_handle   String? @db.VarChar(64)
+  artist_id  BigInt
+  channel_id BigInt?
+
+  @@index([artist_id], map: "artist_idx")
+  @@index([channel_id], map: "channel_idx")
+}
