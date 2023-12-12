@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # panda css
 styled-system
+
+# drizzle-orm
+drizzle
