@@ -72,7 +72,6 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 | `pnpm format` | Format source files with `prettier`                     |
 | `pnpm lint` | Lint source files with `eslint`                     |
-| `pnpm postinstall` | Command which should be run after `git clone`                     |
 | `pnpm vercel` | Run [vercel](https://vercel.com/dashboard) CLI Tool |
 | `pnpm db:generate` | Generate [Drizzle ORM](https://orm.drizzle.team/) migration files |
 | `pnpm db:pull` | Pull data from database |
