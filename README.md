@@ -37,10 +37,10 @@ corepack prepare pnpm@latest --activate
 pnpm i
 ```
 
-### Postinstall
+### Generate Panda CSS utility classes
 
 ```sh
-pnpm postinstall
+pnpm prepare
 ```
 
 ### Environment variables
