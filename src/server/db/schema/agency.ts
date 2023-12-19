@@ -17,7 +17,7 @@ export const agency = mysqlTable(
     publicId: char("public_id", { length: 16 }).notNull().unique(),
     nameJp: text("name_jp"),
     nameEn: text("name_en"),
-    nameKr: text("name_kr"),
+    nameKo: text("name_ko"),
     defaultLang: char("default_lang", { length: 2 }).notNull(),
     xHandle: varchar("x_handle", { length: 64 }).notNull(),
     website: text("website"),

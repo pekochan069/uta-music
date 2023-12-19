@@ -1,8 +1,85 @@
 ---
 import { Image } from "astro:assets";
+import { css, cx } from "styled-system/css";
 import { container } from "styled-system/patterns";
 
 import Logo from "~/assets/logo.png";
+
+import { RotateLeftSwap } from "../common/swap";
+import { recipe } from "./Navbar.styles";
+import ThemeProvider from "./ThemeProvider.astro";
+
+const styles = recipe();
 ---
 
-<header class={container()}>header</header>
+<header class={styles.header}>
+  <nav class={cx(container(), styles.nav)}>
+    <div class={styles.logoContainer}>
+      <a class={styles.logoAnchor} href="/"
+        ><Image alt="Main Logo" class={styles.logoImage} src={Logo} /><div
+          class={styles.logoText}
+        >
+          <span>Uta</span><span>Music</span>
+        </div></a
+      >
+      <div class={styles.menuButtonContainer}>
+        <RotateLeftSwap class={styles.menuButton} inputId="menu-button">
+          <svg
+            class="swap-off"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><line x1="3" x2="21" y1="6" y2="6"></line><line
+              x1="3"
+              x2="21"
+              y1="12"
+              y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg
+          >
+          <svg
+            class="swap-on"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+          >
+        </RotateLeftSwap>
+      </div>
+    </div>
+    <div>
+      <button class={styles.settingsButton}>
+        <span>Settings</span>
+        <svg
+          class={css({
+            marginInlineStart: 1,
+            h: 6,
+            w: 6,
+            flexShrink: 0,
+          })}
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg
+        >
+        <ThemeProvider />
+      </button>
+    </div>
+  </nav>
+  <script></script>
+</header>

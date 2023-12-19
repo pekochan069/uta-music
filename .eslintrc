@@ -2,8 +2,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
     "plugin:jsdoc/recommended-typescript",
     "plugin:perfectionist/recommended-natural",
     "plugin:solid/typescript",
@@ -23,12 +21,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module",
     "project": "./tsconfig.json"
-  },
-  "settings": {
-    "import/resolver": {
-      "typescript": true,
-      "node": true
-    }
   },
   "rules": {
     "codegen/codegen": "error",
@@ -52,7 +44,8 @@
         ]
       },
       "rules": {
-        "solid/self-closing-comp": "off"
+        "solid/self-closing-comp": "off",
+        "codegen/codegen": "off"
       }
     }
   ],

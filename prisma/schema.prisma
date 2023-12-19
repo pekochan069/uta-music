@@ -9,15 +9,17 @@ datasource db {
 }
 
 model agency {
-  id           BigInt  @id @default(autoincrement())
-  public_id    String  @unique(map: "agency_public_id_unique") @db.Char(16)
-  name_jp      String? @db.Text
-  name_en      String? @db.Text
-  name_kr      String? @db.Text
-  default_lang String  @db.Char(2)
-  x_handle     String  @db.VarChar(64)
-  website      String? @db.Text
+  id           BigInt   @id @default(autoincrement())
+  public_id    String   @unique(map: "agency_public_id_unique") @db.Char(16)
+  name_jp      String?  @db.Text
+  name_en      String?  @db.Text
+  name_ko      String?  @db.Text
+  default_lang String   @db.Char(2)
+  x_handle     String   @db.VarChar(64)
+  website      String?  @db.Text
+  channel      channel? @relation(fields: [channel_id], references: [id])
   channel_id   BigInt?
+  vtuber       vtuber[]
 
   @@index([channel_id], map: "channel_idx")
 }
@@ -27,8 +29,15 @@ model artist {
   public_id    String  @unique(map: "artist_public_id_unique") @db.Char(16)
   name_jp      String? @db.Text
   name_en      String? @db.Text
-  name_kr      String? @db.Text
+  name_ko      String? @db.Text
   default_lang String  @db.Char(2)
+
+  composers         composer[]
+  singers           singer[]
+  vocaloids         vocaloid[]
+  vtubers           vtuber[]
+  uta_participants  uta_participants[]
+  song_participants song_participants[]
 }
 
 model channel {
@@ -36,12 +45,32 @@ model channel {
   channel_id     String @db.VarChar(64)
   channel_name   String @db.Text
   channel_handle String @db.Text
+
+  agencies agency[]
+  video    video[]
+  composer composer[]
+  singer   singer[]
+  vtuber   vtuber[]
+}
+
+model composer {
+  id         BigInt   @id @default(autoincrement())
+  x_handle   String?  @db.VarChar(64)
+  artist     artist   @relation(fields: [artist_id], references: [id])
+  artist_id  BigInt
+  channel    channel? @relation(fields: [channel_id], references: [id])
+  channel_id BigInt?
+
+  @@index([artist_id], map: "artist_idx")
+  @@index([channel_id], map: "channel_idx")
 }
 
 model singer {
-  id         BigInt  @id @default(autoincrement())
-  x_handle   String? @db.VarChar(64)
+  id         BigInt   @id @default(autoincrement())
+  x_handle   String?  @db.VarChar(64)
+  artist     artist   @relation(fields: [artist_id], references: [id])
   artist_id  BigInt
+  channel    channel? @relation(fields: [channel_id], references: [id])
   channel_id BigInt?
 
   @@index([artist_id], map: "artist_idx")
@@ -49,19 +78,24 @@ model singer {
 }
 
 model song {
-  id           BigInt  @id @default(autoincrement())
-  public_id    String  @unique(map: "song_public_id_unique") @db.Char(16)
-  name_jp      String? @db.Text
-  name_en      String? @db.Text
-  name_kr      String? @db.Text
-  default_lang String  @db.Char(2)
-  video_id     BigInt?
+  id                BigInt              @id @default(autoincrement())
+  public_id         String              @unique(map: "song_public_id_unique") @db.Char(16)
+  name_jp           String?             @db.Text
+  name_en           String?             @db.Text
+  name_ko           String?             @db.Text
+  default_lang      String              @db.Char(2)
+  video             video?              @relation(fields: [video_id], references: [id])
+  video_id          BigInt?
+  song_participants song_participants[]
+  uta_songs         uta_songs[]
 
   @@index([video_id], map: "video_idx")
 }
 
 model song_participants {
+  song      song   @relation(fields: [song_id], references: [id])
   song_id   BigInt
+  artist    artist @relation(fields: [artist_id], references: [id])
   artist_id BigInt
 
   @@id([song_id, artist_id])
@@ -70,19 +104,24 @@ model song_participants {
 }
 
 model uta {
-  id              BigInt    @id @default(autoincrement())
-  public_id       String    @unique(map: "uta_public_id_unique") @db.Char(16)
-  type            String    @db.VarChar(64)
-  timestamp_start DateTime? @db.Time(0)
-  timestamp_end   DateTime? @db.Time(0)
-  title           String?   @db.Text
-  video_id        BigInt
+  id               BigInt             @id @default(autoincrement())
+  public_id        String             @unique(map: "uta_public_id_unique") @db.Char(16)
+  type             String             @db.VarChar(64)
+  timestamp_start  DateTime?          @db.Time(0)
+  timestamp_end    DateTime?          @db.Time(0)
+  title            String?            @db.Text
+  video            video              @relation(fields: [video_id], references: [id])
+  video_id         BigInt
+  uta_participants uta_participants[]
+  uta_songs        uta_songs[]
 
   @@index([video_id], map: "video_idx")
 }
 
 model uta_participants {
+  artist    artist @relation(fields: [artist_id], references: [id])
   artist_id BigInt
+  uta       uta    @relation(fields: [uta_id], references: [id])
   uta_id    BigInt
 
   @@id([artist_id, uta_id])
@@ -91,7 +130,9 @@ model uta_participants {
 }
 
 model uta_songs {
+  uta     uta    @relation(fields: [uta_id], references: [id])
   uta_id  BigInt
+  song    song   @relation(fields: [song_id], references: [id])
   song_id BigInt
 
   @@id([uta_id, song_id])
@@ -105,36 +146,33 @@ model video {
   length       DateTime? @db.Time(0)
   release_date DateTime? @db.DateTime(0)
   title        String    @db.Text
+  channel      channel   @relation(fields: [channel_id], references: [id])
   channel_id   BigInt
+  song         song[]
+  uta          uta[]
 
   @@index([channel_id], map: "channel_idx")
 }
 
 model vocaloid {
-  id        BigInt  @id @default(autoincrement())
-  artist_id BigInt?
+  id        BigInt @id @default(autoincrement())
+  artist    artist @relation(fields: [artist_id], references: [id])
+  artist_id BigInt
 
   @@index([artist_id], map: "artist_idx")
 }
 
 model vtuber {
-  id         BigInt  @id @default(autoincrement())
-  x_handle   String? @db.VarChar(64)
+  id         BigInt   @id @default(autoincrement())
+  x_handle   String?  @db.VarChar(64)
+  artist     artist   @relation(fields: [artist_id], references: [id])
   artist_id  BigInt
+  agency     agency   @relation(fields: [agency_id], references: [id])
   agency_id  BigInt
+  channel    channel? @relation(fields: [channel_id], references: [id])
   channel_id BigInt?
 
   @@index([agency_id], map: "agency_idx")
-  @@index([artist_id], map: "artist_idx")
-  @@index([channel_id], map: "channel_idx")
-}
-
-model composer {
-  id         BigInt  @id @default(autoincrement())
-  x_handle   String? @db.VarChar(64)
-  artist_id  BigInt
-  channel_id BigInt?
-
   @@index([artist_id], map: "artist_idx")
   @@index([channel_id], map: "channel_idx")
 }

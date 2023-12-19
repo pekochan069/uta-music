@@ -1,11 +1,11 @@
 ---
-import { css } from "styled-system/css";
 
 type Props = {
   title?: string;
 };
 
 const { title = "Uta Music" } = Astro.props;
+
 ---
 
 <html lang="en">
@@ -16,7 +16,7 @@ const { title = "Uta Music" } = Astro.props;
     <meta content={Astro.generator} name="generator" />
     <title>{title}</title>
   </head>
-  <body class={css({ color: "text", backgroundColor: "background" })}>
+  <body>
     <slot />
   </body>
   <script>
@@ -27,5 +27,29 @@ const { title = "Uta Music" } = Astro.props;
         autoHide: "scroll",
       },
     });
+  </script>
+  <script is:inline>
+    // const setColorMode = () => {
+    //   const colorMode = (() => {
+    //     if (
+    //       typeof localStorage !== "undefined" &&
+    //       localStorage.getItem("color-mode")
+    //     ) {
+    //       return localStorage.getItem("color-mode");
+    //     }
+    //     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    //       return "dark";
+    //     }
+    //     return "light";
+    //   })();
+
+    //   if (colorMode === "dark") {
+    //     document.documentElement.classList.add("dark");
+    //   }
+
+    //   window.localStorage.setItem("color-mode", colorMode);
+    // };
+    // setColorMode();
+    // document.addEventListener("astro:before-swap", setColorMode);
   </script>
 </html>

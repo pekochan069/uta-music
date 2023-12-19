@@ -12,6 +12,7 @@
   },
   "include": [
     "src",
-    "styled-system"
+    "styled-system",
+    "recipes"
   ]
 }

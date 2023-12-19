@@ -17,12 +17,14 @@
     "db:generate": "drizzle-kit generate:mysql --config=drizzle.config.ts",
     "db:pull": "drizzle-kit introspect:mysql --config=drizzle.config.ts",
     "db:push": "drizzle-kit push:mysql --config=drizzle.config.ts",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "pandadev": ""
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
     "@astrojs/solid-js": "^3.0.2",
     "@astrojs/vercel": "^6.0.1",
+    "@kobalte/core": "^0.11.2",
     "@prisma/client": "^5.7.0",
     "@trpc/client": "^10.44.1",
     "@trpc/server": "^10.44.1",
@@ -42,11 +44,9 @@
     "drizzle-kit": "^0.20.6",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-astro": "^0.30.0",
     "eslint-plugin-codegen": "^0.21.0",
     "eslint-plugin-drizzle": "^0.2.2",
-    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsdoc": "^46.9.0",
     "eslint-plugin-perfectionist": "^2.5.0",
     "eslint-plugin-solid": "^0.13.0",
