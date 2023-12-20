@@ -1,12 +1,16 @@
 ---
-import { RotateSwap } from "~/components/common/swap";
+import { cx } from "styled-system/css";
+
+import { swapRecipe } from "~/recipes";
 
 import { recipe } from "./ThemeProvider.styles";
 
 const styles = recipe();
+const rotateSwap = swapRecipe({ visual: "rotate" });
 ---
 
-<RotateSwap class={styles.swap} inputId="theme-input">
+<label class={cx(styles.swap, rotateSwap.root)}>
+  <input class={rotateSwap.input} id="theme-input" type="checkbox" />
   <svg
     class="swap-off"
     height="32"
@@ -27,7 +31,7 @@ const styles = recipe();
       d="M9.5 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T19.5 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T9.5 22q-1.325 0-2.588-.337T4.5 20.65Q6.825 19.3 8.163 17T9.5 12q0-2.7-1.338-5T4.5 3.35q1.15-.675 2.413-1.012T9.5 2"
       fill="currentColor"></path></svg
   >
-</RotateSwap>
+</label>
 <script is:inline>
   const registerColorModeToggle = () => {
     document.getElementById("theme-input").addEventListener("change", () => {

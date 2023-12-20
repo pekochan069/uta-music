@@ -4,12 +4,14 @@ import { css, cx } from "styled-system/css";
 import { container } from "styled-system/patterns";
 
 import Logo from "~/assets/logo.png";
+import { dropdownRecipe, swapRecipe } from "~/recipes";
 
-import { RotateLeftSwap } from "../common/swap";
 import { recipe } from "./Navbar.styles";
 import ThemeProvider from "./ThemeProvider.astro";
 
 const styles = recipe();
+const rotateLeftSwap = swapRecipe({ visual: "rotateLeft" });
+const dropdown = dropdownRecipe();
 ---
 
 <header class={styles.header}>
@@ -23,7 +25,9 @@ const styles = recipe();
         </div></a
       >
       <div class={styles.menuButtonContainer}>
-        <RotateLeftSwap class={styles.menuButton} inputId="menu-button">
+        <label class={styles.menuButton}>
+          <inpu class={rotateLeftSwap.input} id="menu-button" type="checkbox"
+          ></inpu>
           <svg
             class="swap-off"
             fill="none"
@@ -54,19 +58,14 @@ const styles = recipe();
             xmlns="http://www.w3.org/2000/svg"
             ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
           >
-        </RotateLeftSwap>
+        </label>
       </div>
     </div>
     <div>
       <button class={styles.settingsButton}>
         <span>Settings</span>
         <svg
-          class={css({
-            marginInlineStart: 1,
-            h: 6,
-            w: 6,
-            flexShrink: 0,
-          })}
+          class={styles.settingsIcon}
           fill="none"
           height="24"
           stroke="currentColor"
@@ -77,9 +76,16 @@ const styles = recipe();
           width="24"
           xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg
         >
-        <ThemeProvider />
       </button>
     </div>
+    <ThemeProvider />
   </nav>
+    <div class={cx("group", dropdown.root)}>
+      <div class={dropdown.button} role="button" tabindex={0}>Click</div>
+      <ul class={dropdown.content} tabindex={0}>
+        <li><a>Item 1</a></li>
+        <li><a>Item 2</a></li>
+      </ul>
+    </div>
   <script></script>
 </header>

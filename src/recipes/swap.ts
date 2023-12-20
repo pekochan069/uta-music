@@ -1,9 +1,23 @@
 import { sva } from "styled-system/css";
 
-export const recipe = sva({
-  slots: ["label", "input"],
+/**
+ * @summary A recipe for creating a swap component.
+ * @example all possible variants: `"rotate" | "rotateRight" | "rotateLeft" | "flip"`
+ * @example
+ * ```
+ * const swap = recipe()
+ * const rotateSwap = recipe({ visual: "rotate" })
+ * <label class={swap.root}>
+ *   <input type="checkbox" class={swap.input} />
+ *   <span class={swap.on}>On</span>
+ *   <span class={swap.off}>Off</span>
+ * </label>
+ * ```
+ */
+export const swapRecipe = sva({
+  slots: ["root", "input"],
   base: {
-    label: {
+    root: {
       position: "relative",
       display: "inline-grid",
       placeContent: "center",
@@ -33,7 +47,7 @@ export const recipe = sva({
   variants: {
     visual: {
       rotate: {
-        label: {
+        root: {
           "& .swap-on": {
             rotate: "45deg",
           },
@@ -46,7 +60,7 @@ export const recipe = sva({
         },
       },
       rotateRight: {
-        label: {
+        root: {
           "& .swap-on": {
             rotate: "90deg",
           },
@@ -59,7 +73,7 @@ export const recipe = sva({
         },
       },
       rotateLeft: {
-        label: {
+        root: {
           "& .swap-on": {
             rotate: "-90deg",
           },
@@ -72,7 +86,7 @@ export const recipe = sva({
         },
       },
       flip: {
-        label: {
+        root: {
           transformStyle: "preserve-3d",
           perspective: "16em",
           "& .swap-on": {

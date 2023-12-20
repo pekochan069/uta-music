@@ -1,6 +1,6 @@
 import { type JSX } from "solid-js";
 
-import { recipe } from "./swap.styles";
+import { swapRecipe } from "~/recipes/swap";
 
 type SwapProps = {
   checked?: boolean;
@@ -11,7 +11,7 @@ type SwapProps = {
 };
 
 export const Swap = (props: SwapProps) => {
-  const styles = recipe();
+  const styles = swapRecipe();
   return (
     <label class={`${styles.label} ${props.class ?? ""}`}>
       <input
@@ -27,7 +27,7 @@ export const Swap = (props: SwapProps) => {
 };
 
 export const RotateSwap = (props: SwapProps) => {
-  const styles = recipe({ visual: "rotate" });
+  const styles = swapRecipe({ visual: "rotate" });
 
   return (
     <label class={`${styles.label} ${props.class ?? ""}`}>
@@ -44,7 +44,7 @@ export const RotateSwap = (props: SwapProps) => {
 };
 
 export const RotateRightSwap = (props: SwapProps) => {
-  const styles = recipe({ visual: "rotateRight" });
+  const styles = swapRecipe({ visual: "rotateRight" });
 
   return (
     <label class={`${styles.label} ${props.class ?? ""}`}>
@@ -61,7 +61,7 @@ export const RotateRightSwap = (props: SwapProps) => {
 };
 
 export const RotateLeftSwap = (props: SwapProps) => {
-  const styles = recipe({ visual: "rotateLeft" });
+  const styles = swapRecipe({ visual: "rotateLeft" });
 
   return (
     <label class={`${styles.label} ${props.class ?? ""}`}>

@@ -1,20 +1,27 @@
 ---
+import { css } from "styled-system/css";
 import { grid } from "styled-system/patterns";
+
 import VideoItem from "~/components/VideoItem";
 import WithNavbar from "~/layouts/WithNavbar.astro";
+import { buttonRecipe } from "~/recipes";
 
 const videoUrl = "https://youtu.be/mhbjiJwv0Kw";
 const thumbnailUrl = "https://i.ytimg.com/vi/mhbjiJwv0Kw/maxresdefault.jpg";
+
+const button = buttonRecipe({ color: "gray", size: "md", visual: "outline"});
 ---
 
 <WithNavbar>
-  <div class={grid({ })}>
-
+  <div class={grid({})}>
     <VideoItem
-    channel="白玖ウタノ"
-    thumbnailUrl={thumbnailUrl}
-    title="綺羅キラー"
-    videoUrl={videoUrl}
+      channel="白玖ウタノ"
+      thumbnailUrl={thumbnailUrl}
+      title="綺羅キラー"
+      videoUrl={videoUrl}
     />
+  </div>
+  <div class={css({ w: "full", px: 4 })}>
+    <button class={button.root}>button</button>
   </div>
 </WithNavbar>

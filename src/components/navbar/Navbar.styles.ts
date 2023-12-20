@@ -11,6 +11,7 @@ export const recipe = sva({
     "menuButtonContainer",
     "menuButton",
     "settingsButton",
+    "settingsIcon",
     "settingsMenu",
   ],
   base: {
@@ -102,6 +103,12 @@ export const recipe = sva({
     settingsButton: {
       display: "flex",
       alignItems: "center",
+    },
+    settingsIcon: {
+      marginInlineStart: 1,
+      h: 6,
+      w: 6,
+      flexShrink: 0,
     },
   },
 });
